@@ -1,0 +1,144 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <!-- Internet permission for API calls -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <!-- 百度地图必需权限（根据官方文档要求） -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" 
+        tools:ignore="ProtectedPermissions" />
+    
+    <!-- 百度地图SDK v7.5.0+额外需要的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    
+    <!-- 百度地图境外服务权限 -->
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" 
+        tools:ignore="MockLocation" />
+    
+    <!-- Bluetooth permissions -->
+    <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
+    <!-- For Android 12+ (API level 31+) -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" 
+        android:usesPermissionFlags="neverForLocation" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    
+    <!-- Camera permissions -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    
+    <!-- Audio permissions -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    
+    <!-- Storage permissions -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
+    <!-- Vibration -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!-- Wake lock -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
+    <!-- For requesting ignore battery optimizations -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    
+    <!-- Features -->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
+    <application
+        android:label="PetTalk"
+        android:name="com.pettalk.translator.pet_talk.PetTalkApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:allowBackup="true"
+        android:requestLegacyExternalStorage="true"
+        android:allowNativeHeapPointerTagging="false">
+        
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            
+            <!-- Standard App Identity -->
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+            
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        
+        <!-- Don't delete the meta-data below. This is used by the Flutter tool -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+            
+                 <!-- Google Maps API Key (iOS使用) -->
+         <meta-data
+             android:name="com.google.android.geo.API_KEY"
+             android:value="AIzaSyBvOkBwgglgXulFl6ZiYSv1JFVhftFDdOI" />
+             
+         <!-- 百度地图API Key (Android使用) -->
+         <!-- 请在百度地图开放平台申请API Key并替换下面的占位符 -->
+         <meta-data
+             android:name="com.baidu.lbsapi.API_KEY"
+             android:value="vK6hTnQzAxoZtak72lsgPu6CqNhvtKtc" />
+            
+        <!-- File Provider for sharing files -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+    
+    <!-- Query for installed apps that can handle specific intents -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="*/*" />
+        </intent>
+        <!-- 支持查询百度地图App（Android 11+ 包可见性） -->
+        <package android:name="com.baidu.BaiduMap" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="baidumap" />
+        </intent>
+    </queries>
+</manifest>

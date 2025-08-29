@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 允许明文HTTP流量到百度地图服务器 -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">baidu.com</domain>
+        <domain includeSubdomains="true">bdimg.com</domain>
+        <domain includeSubdomains="true">bdstatic.com</domain>
+        <domain includeSubdomains="true">baidubce.com</domain>
+        <domain includeSubdomains="true">api.map.baidu.com</domain>
+        <domain includeSubdomains="true">lbsyun.baidu.com</domain>
+        <domain includeSubdomains="true">map.baidu.com</domain>
+    </domain-config>
+    
+    <!-- 信任系统证书 -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config>

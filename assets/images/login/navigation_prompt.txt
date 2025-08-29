@@ -1,0 +1,23 @@
+这是一个登陆界面
+资源文件路径是： /Users/howardduan/AndroidStudioProjects/Pettalk/app/src/main/assets/images/login
+背景图是轮播图，图片为 12、15、19、22、126
+APP加载页面是PaaaWOW0001 (1)_00
+登陆整体逻辑参考：PaaaWOW0001 (1)_01 - PaaaWOW0001 (1)_05.png
+特殊登陆方式图标为 1、2、3、4
+
+修改意见：
+PaaaWoW中PaaaW和W黑色，O是红色
+建议设置三个图层，背景是图片轮播，中景是磨砂透明质感，前景用不透明的字体。
+（注意不是全部文字都变成磨砂透明质感！）
+To be closer要和PaaaWOW左对齐，黑色，不用PaaaWow-Regular字体。
+下面四个特殊方式登陆，不要有浅红色的底色，图标适当放大
+点入特殊方式登陆的图标要有相应的跳转：其中1是X，2是苹果，参考跳转PaaaWOW0001 (1)_05.png，3是Facebook，4是google，参考跳转PaaaWOW0001 (1)_04.png
+
+在登陆界面添加两个文本跳转，一个是隐私政策一个是user Agreement,界面参考PaaaWOW0001 (1)_10.png
+PaaaWOW0001 (1)_11.png
+前景窗口太长，适当减小各个部分之间的间距，以降低高度，需要在一页内放得下。
+
+sign up页面和忘记密码页面、特殊方式登陆页面、登陆页面一样，背景用轮播图+PaaaWoW标题。
+sign up页面参考PaaaWOW0001 (1)_02.png
+忘记密码页面参考PaaaWOW0001 (1)_03.png
+

@@ -1,0 +1,40 @@
+# Flutter & Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# IDE
+.idea/
+.vscode/
+
+# Android
+android/local.properties
+android/.gradle/
+android/app/build/
+
+# iOS
+ios/build/
+ios/Pods/
+ios/Runner.xcworkspace/xcuserdata/
+ios/Runner.xcodeproj/xcuserdata/
+ios/Flutter/ephemeral/
+
+# 密钥文件
+*.keystore
+*.jks
+google-services.json
+GoogleService-Info.plist
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+
+# 临时文件
+*.tmp
+*.swp
+*~
