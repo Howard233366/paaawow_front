@@ -55,8 +55,16 @@
 	<string>This app needs access to microphone for AI voice interaction</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to photo library to select pet photos</string>
+	
+	<!-- Location Permissions for Maps -->
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs location access for pet tracking features</string>
+	<string>This app needs location access for pet tracking and map features</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app needs location access for pet tracking and map features</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app needs background location access for pet tracking</string>
+	
+	<!-- Bluetooth Permissions -->
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>This app uses Bluetooth to connect with pet collar devices</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>

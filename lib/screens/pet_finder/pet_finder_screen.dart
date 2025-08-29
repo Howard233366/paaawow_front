@@ -27,9 +27,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 // 模型确保数据类型安全和结构一致性
 import 'package:pet_talk/models/pet_finder_models.dart';
 
-// 导入标准百度地图导航服务
-// 这是封装百度地图API的服务类，用于获取导航路线和路径规划
-import 'package:pet_talk/services/map/standard_baidu_navigation_service.dart';
+// 导入导航服务工厂 - 自动适配平台选择合适的导航服务
+import 'package:pet_talk/services/map/navigation_service_factory.dart';
 
 // 导入宠物寻找API服务
 // 这是与后端服务器通信的服务类，用于发送和接收宠物相关数据
@@ -79,9 +78,9 @@ class _PetFinderScreenState extends ConsumerState<PetFinderScreen> {
   // 在Dart中，final表示变量只能赋值一次，但对象内容可以改变
   // 这些是用于处理业务逻辑和数据操作的服务层对象
   
-  // 百度地图导航服务实例，用于路径规划
-  // StandardBaiduNavigationService()调用构造函数创建实例
-  final _navigationService = StandardBaiduNavigationService();
+  // 导航服务实例，根据平台自动选择百度地图或Google Maps
+  // NavigationServiceFactory.getInstance()自动适配平台
+  final _navigationService = NavigationServiceFactory.getInstance();
   
   // 宠物寻找API服务实例，用于与后端通信
   // 负责发送HTTP请求，获取和提交宠物相关数据

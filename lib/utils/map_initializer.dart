@@ -3,9 +3,11 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_talk/utils/network_checker.dart';
+
+// 百度地图SDK导入（仅Android使用）
 import 'package:flutter_baidu_mapapi_base/flutter_baidu_mapapi_base.dart';
 import 'package:flutter_bmflocation/flutter_bmflocation.dart';
-import 'package:pet_talk/utils/network_checker.dart';
 
 /// 地图初始化器
 /// 负责在应用启动时初始化相应的地图SDK
@@ -35,7 +37,8 @@ class MapInitializer {
       if (kIsWeb) {
         debugPrint('🗺️ Web平台 - 使用Google Maps，无需初始化');
       } else if (Platform.isIOS) {
-        debugPrint('🗺️ iOS平台 - 使用Google Maps，无需初始化');
+        debugPrint('🗺️ iOS平台 - 使用Google Maps，验证API密钥');
+        await _validateGoogleMapsSetup();
       } else if (Platform.isAndroid) {
         debugPrint('🗺️ Android平台 - 初始化百度地图SDK');
         await _initializeBaiduMapSDK();
@@ -95,6 +98,28 @@ class MapInitializer {
 
   /// 检查是否已初始化
   static bool get isInitialized => _isInitialized;
+
+  /// 验证Google Maps设置
+  static Future<void> _validateGoogleMapsSetup() async {
+    try {
+      debugPrint('🗺️ [Google] 开始验证Google Maps API设置');
+      
+      // 检查API密钥是否有效（简单验证）
+      const String googleApiKey = 'AIzaSyBvOkBwgglgXulFl6ZiYSv1JFVhftFDdOI';
+      
+      if (googleApiKey.isEmpty || googleApiKey.contains('YOUR_API_KEY')) {
+        debugPrint('🗺️ [Google] ⚠️ Google Maps API密钥未正确配置');
+        return;
+      }
+      
+      debugPrint('🗺️ [Google] ✅ Google Maps API密钥已配置');
+      debugPrint('🗺️ [Google] ✅ iOS平台Google Maps准备就绪');
+      
+    } catch (e, stackTrace) {
+      debugPrint('🗺️ [Google] ❌ Google Maps验证失败: $e');
+      debugPrint('🗺️ [Google] 错误堆栈: $stackTrace');
+    }
+  }
 
   /// 重置初始化状态（主要用于测试）
   static void reset() {

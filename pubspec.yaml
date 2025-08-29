@@ -56,15 +56,17 @@ dependencies:
   firebase_core: ^2.32.0
   sign_in_with_apple: ^6.1.1
   
-  # Maps - 标准百度地图Flutter SDK方案（官方最新版本）
+  # Maps - 跨平台地图方案
   google_maps_flutter: ^2.6.1           # iOS使用Google Maps
-  flutter_baidu_mapapi_base: ^3.8.1     # 百度地图基础库（官方最新）
-  flutter_baidu_mapapi_map: ^3.8.1      # 百度地图显示组件（官方最新）
-  flutter_baidu_mapapi_search: ^3.8.1   # 百度地图搜索和路径规划（官方最新）
-  flutter_baidu_mapapi_utils: ^3.8.1    # 百度地图工具库（官方最新）
-  flutter_bmflocation: ^3.3.0           # 百度定位服务（最新）
   location: ^5.0.3                      # 通用定位服务
   geolocator: ^10.1.1                   # 通用地理位置服务
+  
+  # 百度地图SDK（仅Android使用，iOS会忽略）
+  flutter_baidu_mapapi_base: ^3.8.1     # 百度地图基础库
+  flutter_baidu_mapapi_map: ^3.8.1      # 百度地图显示组件
+  flutter_baidu_mapapi_search: ^3.8.1   # 百度地图搜索和路径规划
+  flutter_baidu_mapapi_utils: ^3.8.1    # 百度地图工具库
+  flutter_bmflocation: ^3.3.0           # 百度定位服务
   
   # UI Components
   flutter_svg: ^2.0.10+1
